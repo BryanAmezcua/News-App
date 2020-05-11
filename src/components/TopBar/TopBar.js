@@ -13,6 +13,9 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 
+//Animation
+import Grow from '@material-ui/core/Grow';
+
 // Custom Components
 import AppDrawer from '../AppDrawer/AppDrawer.js';
 
@@ -104,6 +107,7 @@ export default function SearchAppBar(props) {
   }
 
   return (
+    <Grow in={true} timeout={650}>
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
@@ -132,10 +136,6 @@ export default function SearchAppBar(props) {
                 id='inputField'
                 inputProps={{ 'aria-label': 'search' }}
               />
-
-                <Typography className={classes.welcomeText} variant="h6" noWrap>
-                  Welcome {props.firstName}
-                </Typography>
                 
             </div>
 
@@ -150,5 +150,6 @@ export default function SearchAppBar(props) {
           </Toolbar>
         </AppBar>
       </div>
+    </Grow>
   );
 }

@@ -24,6 +24,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function AppDrawer(props) {
     const classes = useStyles();
+    let dynamic_link, dynamic_text = '';
+
+    if (window.location.href.indexOf('/profile') !== -1) {
+        dynamic_link = '/home';
+        dynamic_text = 'Home';
+    } else {
+        dynamic_link = '/profile';
+        dynamic_text = 'My Profile';
+    }
+
     return (
         <div>
             <Drawer
@@ -31,12 +41,12 @@ export default function AppDrawer(props) {
                 transitionDuration={450}
             >
                 <List component="nav">
-                    <Link to="/profile" className={classes.link}>
+                    <Link to={dynamic_link} className={classes.link}>
                         <ListItem button divider={true}>
                             <ListItemIcon>
                             <AccountCircleIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="My Profile"/>
+                            <ListItemText primary={dynamic_text}/>
                         </ListItem>
                     </Link>
                 </List>
