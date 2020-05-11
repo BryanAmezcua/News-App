@@ -29,12 +29,11 @@ function NewsContainer(props) {
                     <Container maxWidth="lg" className={classes.cardGrid}>
 
                         <Grid container spacing={4}>
-                            {props.newsResults.map(newsCard => (
-                                <Grid item xs={12} sm={6} md={4}>
+                            {props.newsResults.map((newsCard, index) => (
+                                <Grid item key={index} xs={12} sm={6} md={4}>
                                     <NewsCard 
                                         newsCard={ newsCard }
-                                        isLoading={ props.isLoading } 
-                                        //contentReady={ props.contentReady }
+                                        isLoading={ props.isLoading }
                                     />
                                 </Grid>
                             ))}

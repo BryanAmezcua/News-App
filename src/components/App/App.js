@@ -4,43 +4,69 @@ import './App.css';
 //Custom Components
 import TopBar from '../TopBar/TopBar.js';
 import NewsContainer from '../NewsContainer/NewsContainer.js';
-import Footer from '../Footer/Footer.js';
+import SignIn from '../SignIn/SignIn.js';
 import newsAPI from '../../util/newsAPI.js'
+import Register from '../Register/Register.js';
+import Profile from '../Profile/Profile.js';
+import ProfileBar from '../ProfileBar/ProfileBar.js';
+
+// React Router
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 
-export default function App() {
+function App() {
 
   const [newsResults, setNewResults] = useState([]);
   const [isLoading, setLoader] = useState(true);
 
   const searchNewsAPI = (term) => {
-    newsAPI.searchNewsAPI(term).then(articles => {
-      setNewResults(articles);
-    })
+    if (term === '') {
+      return;
+    } else {
+      setLoader(true);
+      newsAPI.searchNewsAPI(term).then(articles => {
+        setNewResults(articles);
+        setLoader(false);
+      });
+    }
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    newsAPI.getDefaultNews().then(jsonResponse => {
-      setNewResults(jsonResponse.articles);
-        setTimeout(() => {
-          setLoader(false);
-        }, 2000)
-    })
+  //   newsAPI.getDefaultNews().then(jsonResponse => {
+  //     setNewResults(jsonResponse.articles);
+  //       setTimeout(() => {
+  //         setLoader(false);
+  //       }, 2000)
+  //   });
 
-  }, [isLoading]);
+  // }, []);
 
   return (
-    <div>
+    <Switch>
 
-        <TopBar 
-          onSearch={ searchNewsAPI }
-        />
-        <NewsContainer 
-          newsResults={ newsResults }
-          isLoading={ isLoading }
-        />
+      <Route path="/" exact component={SignIn}/>
+      <Route path="/register" exact component={Register}/>
+      <Route path="/profile" exact render={props => 
+        <div>
+          <ProfileBar/>
+          <Profile/>
+        </div>}/>
+      <Route path="/home" exact render={props => 
+        <div>
+          <TopBar
+            firstName={ props.firstName }
+            onSearch={ searchNewsAPI }
+          />
+          <NewsContainer 
+            newsResults={ newsResults }
+            isLoading={ isLoading }
+          />
+        </div>}>
+      </Route>
 
-      </div>
+    </Switch>
   );
-}
+};
+
+export default withRouter(App);

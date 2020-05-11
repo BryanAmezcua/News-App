@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
     },
     cardMedia: {
-        paddingTop: '76.25%', // 16:9
+        padding: '30% 0%',
     },
     cardContent: {
         flexGrow: 1,
@@ -72,21 +72,23 @@ function NewsCard(props) {
         return (
             <div>
                 <Skeleton animation="wave" variant="rect" height={260} width={340} />
+                <Skeleton animation="wave" variant="text" height={40} width={340} />
                 <Skeleton animation="wave" variant="text" height={30} width={340} />
-                <Skeleton animation="wave" variant="text" width={340} />
-                <Skeleton animation="wave" variant="text" width={340} />
+                <Skeleton animation="wave" variant="text" height={20} width={340} />
             </div>
         );
     } else {
         
         return (
             <Grow in={true}>
-                <Card className={classes.card}>
+
+                <Card className={classes.card} variant="outlined">
                 
                     <CardMedia
+                        alt={props.newsCard.title}
+                        image={props.newsCard.urlToImage}
                         title={props.newsCard.title}
                         className={classes.cardMedia}
-                        image={props.newsCard.urlToImage}
                     />
         
                     <CardContent className={classes.cardContent}>
@@ -111,6 +113,7 @@ function NewsCard(props) {
                         <Button size="large" color="primary" className={classes.viewMoreButton} target="_blank" href={props.newsCard.url}>Read More</Button>
                     </CardActions>
                 </Card>
+
             </Grow>
         );
     }
