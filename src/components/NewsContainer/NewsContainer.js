@@ -31,7 +31,8 @@ function NewsContainer(props) {
                         <Grid container spacing={4}>
                             {props.newsResults.map((newsCard, index) => (
                                 <Grid item key={index} xs={12} sm={6} md={4}>
-                                    <NewsCard 
+                                    <NewsCard
+                                        index = { index }
                                         newsCard={ newsCard }
                                         isLoading={ props.isLoading }
                                     />
