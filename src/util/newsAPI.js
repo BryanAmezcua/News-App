@@ -5,7 +5,7 @@ let api_key = '819ab61d31a341edb17c9b181786e30d';
 
 const newsAPI = {
 
-    getDefaultNews() {
+    async getDefaultNews() {
 
         return fetch('http://newsapi.org/v2/top-headlines?country=us&apiKey=' + api_key) // get top headlines from USA -- API is attached at the end
 
@@ -18,7 +18,7 @@ const newsAPI = {
     },
 
 
-    searchNewsAPI(term) {
+    async searchNewsAPI(term) {
 
         // set the vars
         let date = new Date();
