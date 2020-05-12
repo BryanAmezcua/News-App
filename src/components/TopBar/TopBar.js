@@ -13,9 +13,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 
-//Animation
-import Grow from '@material-ui/core/Grow';
-
 // Custom Components
 import AppDrawer from '../AppDrawer/AppDrawer.js';
 
@@ -107,49 +104,47 @@ export default function SearchAppBar(props) {
   }
 
   return (
-    <Grow in={true} timeout={650}>
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
 
-            <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
-              <MenuIcon />
-              <AppDrawer open={isDrawerOpen}/>
-            </IconButton>
-            
-            <Typography className={classes.title} variant="h3" noWrap>
-              News
-            </Typography>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
+            <MenuIcon />
+            <AppDrawer open={isDrawerOpen}/>
+          </IconButton>
+          
+          <Typography className={classes.title} variant="h3" noWrap>
+            News
+          </Typography>
 
-            <div className={classes.search} id='search'>
+          <div className={classes.search} id='search'>
 
-              <div className={classes.searchIcon}>
-                <SearchIcon/>
-              </div>
-
-              <InputBase
-                placeholder='Search...'
-                classes={{
-                    root: classes.root,
-                    input: classes.inputInput
-                }}
-                id='inputField'
-                inputProps={{ 'aria-label': 'search' }}
-              />
-                
+            <div className={classes.searchIcon}>
+              <SearchIcon/>
             </div>
 
-            <Button
-              variant="contained" 
-              color="secondary" 
-              onClick={() => { props.onSearch(handleTermInput()) }} 
-              className={classes.searchButton} 
-              id="submitButton">GO
-            </Button>
+            <InputBase
+              placeholder='Search...'
+              classes={{
+                  root: classes.root,
+                  input: classes.inputInput
+              }}
+              id='inputField'
+              inputProps={{ 'aria-label': 'search' }}
+            />
+              
+          </div>
 
-          </Toolbar>
-        </AppBar>
-      </div>
-    </Grow>
+          <Button
+            variant="contained" 
+            color="secondary" 
+            onClick={() => { props.onSearch(handleTermInput()) }} 
+            className={classes.searchButton} 
+            id="submitButton">GO
+          </Button>
+
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 }
