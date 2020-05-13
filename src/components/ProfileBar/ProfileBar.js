@@ -40,23 +40,23 @@ export default function ProfileBar(props) {
   let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
   return (
-    <Grow in={true} timeout={650}>
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
 
-                <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
-                    <MenuIcon />
-                    <AppDrawer open={isDrawerOpen}/>
-                </IconButton>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
+              <MenuIcon />
+              <AppDrawer open={isDrawerOpen}/>
+          </IconButton>
 
-                <Typography className={classes.title} variant="h4" noWrap>
-                    Welcome {firstName}
-                </Typography>
+          <Grow in={true} timeout={650}>
+            <Typography className={classes.title} variant="h4" noWrap>
+                Welcome {firstName}
+            </Typography>
+          </Grow>
 
-                </Toolbar>
-            </AppBar>
+        </Toolbar>
+      </AppBar>
         </div>
-    </Grow>
   );
 }
