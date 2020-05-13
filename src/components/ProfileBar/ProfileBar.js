@@ -44,12 +44,12 @@ export default function ProfileBar(props) {
       <AppBar position="static">
         <Toolbar>
 
-          <Grow in={true} timeout={650}>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
-                <MenuIcon />
-                <AppDrawer open={isDrawerOpen}/>
-            </IconButton>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
+              <MenuIcon />
+              <AppDrawer open={isDrawerOpen}/>
+          </IconButton>
 
+          <Grow in={true} timeout={650}>
             <Typography className={classes.title} variant="h4" noWrap>
               Welcome {firstName}
             </Typography>
