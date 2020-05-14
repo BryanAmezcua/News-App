@@ -46,7 +46,7 @@ export default function ProfileBar(props) {
 
           <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
               <MenuIcon />
-              <AppDrawer open={isDrawerOpen}/>
+              <AppDrawer open={isDrawerOpen} firstName={firstName}/>
           </IconButton>
 
           <Grow in={true} timeout={650}>
