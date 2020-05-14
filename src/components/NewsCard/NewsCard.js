@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 // Material UI Components
+import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -69,6 +70,14 @@ const useStyles = makeStyles(theme => ({
     },
     shareIcon: {
         "&:hover, &.Mui-focusVisible": {color: 'red'}
+    },
+    collapse: {
+        marginLeft: 'auto',
+        "&:hover, &.Mui-focusVisible": {color: 'blue'},
+        "&:selected, &.Mui-selected": {transform: 'rotate(180deg)'}
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
     },
 }));
 
@@ -141,7 +150,7 @@ function NewsCard(props) {
                         <IconButton className={classes.ShareIcon} onClick={ handleShare }>
                             <ShareIcon/>
                         </IconButton>
-                        <IconButton onClick={ expand }>
+                        <IconButton onClick={ expand } className={clsx(classes.collapse, {[classes.expandOpen]: expanded})}>
                             <ExpandMoreIcon />
                         </IconButton>
                     </CardActions>
@@ -149,10 +158,10 @@ function NewsCard(props) {
                         <CardContent>
                             <Typography paragraph>
                                 {props.newsCard.description}
+                                <Button size="small" color="primary" className={classes.viewMoreButton} target="_blank" href={props.newsCard.url}>
+                                    Read More
+                                </Button>
                             </Typography>
-                            <Button size="large" color="primary" className={classes.viewMoreButton} target="_blank" href={props.newsCard.url}>
-                                Read More
-                            </Button>
                         </CardContent>
                     </Collapse>
 
