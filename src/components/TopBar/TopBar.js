@@ -93,6 +93,8 @@ export default function SearchAppBar(props) {
   const classes = useStyles();
   // Drawer State
   const [isDrawerOpen, setDrawerStatus] = useState(false);
+  // First Name
+  let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
   const handleTermInput = () => {
     let term = document.querySelector('#inputField').value;
@@ -110,7 +112,7 @@ export default function SearchAppBar(props) {
 
           <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={ () => setDrawerStatus(!isDrawerOpen) }>
             <MenuIcon />
-            <AppDrawer open={isDrawerOpen}/>
+            <AppDrawer open={isDrawerOpen} firstName={firstName}/>
           </IconButton>
           
           <Typography className={classes.title} variant="h3" noWrap>
