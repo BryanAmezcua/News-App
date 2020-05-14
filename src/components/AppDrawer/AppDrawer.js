@@ -10,6 +10,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 // Icons
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -19,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     link: {
         textDecoration: 'none',
         color: theme.palette.text.primary,
+    },
+    welcome: {
+        textAlign: 'center',
+        padding: theme.spacing(1, 0)
     },
   }));
 
@@ -40,6 +46,12 @@ export default function AppDrawer(props) {
                 open={props.open}
                 transitionDuration={450}
             >
+                <Typography variant="h6" className={classes.welcome}>
+                    Hello, {props.firstName}
+                </Typography>
+
+                <Divider />
+
                 <List component="nav">
                     <Link to={dynamic_link} className={classes.link}>
                         <ListItem button divider={true}>
