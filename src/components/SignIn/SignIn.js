@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
-//MUI Components
+//Material-UI Components
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,7 +15,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-//Animation
+// Animation
 import Grow from '@material-ui/core/Grow';
 
 //Styles
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn(props, ref) {
   let history = useHistory();
-  
+
   // email state object
   const [credentials, setCredentials] = useState({
     email: '',
@@ -90,6 +90,8 @@ export default function SignIn(props, ref) {
     setPasswordErrors({passwordMessage: '', passwordError: false});
 
     let validation = true;
+    //let regex = /^([0-9]|[a-z])+([0-9a-z]+)$/i; // TO-DO: validate user's email address to ensure it only contains letters/numbers
+    // regex.test(credentials.email)
 
     if (credentials.email === '') {
       setEmailErrors({emailMessage: 'Field is required', emailError: true});
@@ -119,8 +121,9 @@ export default function SignIn(props, ref) {
         setEmailErrors({emailMessage: response.data.message});
         document.cookie = `firstName=${response.data.firstName}`;
         setTimeout(function(){
-          history.push('/home')
-        }, 2000)
+          props.handleLogIn();
+          history.push('/home');
+        }, 1500)
       }
 
     })
@@ -132,64 +135,64 @@ export default function SignIn(props, ref) {
     <Grow in={true} timeout={650}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign In
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              onChange={ event => { setCredentials({ ...credentials, email: event.target.value}); }}
+              helperText= { emailErrors.emailMessage }
+              error = { emailErrors.emailError }
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={ event => { setCredentials({ ...credentials, password: event.target.value}); }}
+              helperText= { passwordErrors.passwordMessage }
+              error = { passwordErrors.passwordError }
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={ classes.submit }
+              onClick = { handleSubmit }
+            >
               Sign In
-            </Typography>
-            <form className={classes.form} noValidate>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={ event => { setCredentials({ ...credentials, email: event.target.value}); }}
-                helperText= { emailErrors.emailMessage }
-                error = { emailErrors.emailError }
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={ event => { setCredentials({ ...credentials, password: event.target.value}); }}
-                helperText= { passwordErrors.passwordMessage }
-                error = { passwordErrors.passwordError }
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={ classes.submit }
-                onClick = { handleSubmit }
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item className={ classes.center }>
-                  <Link href="/register" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+            </Button>
+            <Grid container>
+              <Grid item className={ classes.center }>
+                <Link href="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
               </Grid>
-            </form>
-          </div>
+            </Grid>
+          </form>
+        </div>
         <Box mt={8}>
           <Copyright />
         </Box>
