@@ -41,7 +41,6 @@ export default function ProfileBar(props) {
     const [isDrawerOpen, setDrawerStatus] = useState(false);
 
     let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    console.log(firstName);
 
     return (
         <div className={classes.root}>
