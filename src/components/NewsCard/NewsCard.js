@@ -47,7 +47,8 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center'
     },
     timeStamp: {
-        fontSize: '1em'
+        fontSize: '1em',
+        textAlign: 'left'
     },
     timeIcon:{
         position: 'relative',
@@ -58,6 +59,7 @@ const useStyles = makeStyles(theme => ({
     source: {
         fontSize: '1.1em',
         padding: theme.spacing(2, 0),
+        textAlign: 'left'
     },
     faceIcon: {
         position: 'relative',
