@@ -15,6 +15,7 @@ import Divider from '@material-ui/core/Divider';
 
 // Icons
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LockIcon from '@material-ui/icons/Lock';
 
 //Custom Drawer CSS
 const useStyles = makeStyles(theme => ({
@@ -24,13 +25,14 @@ const useStyles = makeStyles(theme => ({
     },
     welcome: {
         textAlign: 'center',
-        padding: theme.spacing(1, 0)
+        padding: theme.spacing(1, 1.2),
     },
   }));
 
 export default function AppDrawer(props) {
     const classes = useStyles();
     let dynamic_link, dynamic_text = '';
+    let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
     if (window.location.href.indexOf('/profile') !== -1) {
         dynamic_link = '/home';
@@ -47,7 +49,7 @@ export default function AppDrawer(props) {
                 transitionDuration={450}
             >
                 <Typography variant="h6" className={classes.welcome}>
-                    Hello, {props.firstName}
+                    Hello {firstName}
                 </Typography>
 
                 <Divider />
@@ -59,6 +61,14 @@ export default function AppDrawer(props) {
                             <AccountCircleIcon/>
                             </ListItemIcon>
                             <ListItemText primary={dynamic_text}/>
+                        </ListItem>
+                    </Link>
+                    <Link to="/" className={classes.link}>
+                        <ListItem button onClick={() => localStorage.clear()} divider={true}>
+                            <ListItemIcon>
+                            <LockIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Log Out"/>
                         </ListItem>
                     </Link>
                 </List>
