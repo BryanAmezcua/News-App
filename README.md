@@ -30,4 +30,5 @@ When I first began this project there were no cross-origin related issue. Howeve
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-# - Bryan A. 5/22/20 11 AM -
+# Last updated
+5/22/20 11:30 AM -- Bryan A.
