@@ -17,7 +17,7 @@ When I first began this project there were no cross-origin related issue. Howeve
 2.) Login - you will then be forwarded to the home page. <br />
 3.) a default API key is attached so anyone who installs this project can use it out of the box. <br />
 
-<br/> NO SENSITIVE DATA IS CONNECTED TO API <br/>
+<br/> NO SENSITIVE DATA IS CONNECTED TO API KEY<br/>
 
 # Technologies
 1.) create-react-app <br />
