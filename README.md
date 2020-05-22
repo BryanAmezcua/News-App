@@ -15,6 +15,9 @@ When I first began this project there were no cross-origin related issue. Howeve
 # Usage
 1.) To use, please begin by creating an account. After your account has been created you will be redirected to a login screen. <br />
 2.) Login - you will then be forwarded to the home page. <br />
+3.) a default API key is attached so anyone who installs this project can use it out of the box. <br />
+
+<br/> NO SENSITIVE DATA IS CONNECTED TO API <br/>
 
 # Technologies
 1.) create-react-app <br />
