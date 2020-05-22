@@ -1,13 +1,16 @@
 let api_key = '819ab61d31a341edb17c9b181786e30d';
+let URL = 'http://newsapi.org/v2/top-headlines?country=us&apiKey=' + api_key;
+let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+let destination = proxyUrl + URL;
 
 
 
 
 const newsAPI = {
 
-    async getDefaultNews() {
+    async getDefaultNews() { // get top headlines from USA -- API is attached at the end
 
-        return fetch('http://newsapi.org/v2/top-headlines?country=us&apiKey=' + api_key) // get top headlines from USA -- API is attached at the end
+        return fetch(destination)
 
             .then(response => response.json())
             .then(jsonResponse => {

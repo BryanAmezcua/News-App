@@ -42,9 +42,9 @@ function App() {
 
     newsAPI.getDefaultNews().then(jsonResponse => {
       setNewResults(jsonResponse.articles);
-        setTimeout(() => {
-          setLoader(false);
-        }, 2000)
+      setTimeout(() => {
+        setLoader(false);
+      }, 2000)
     });
 
   }, []);
