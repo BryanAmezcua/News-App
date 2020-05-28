@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 export default function AppDrawer(props) {
     const classes = useStyles();
     let dynamic_link, dynamic_text = '';
-    let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    let firstName = localStorage.getItem('firstName');
 
     if (window.location.href.indexOf('/profile') !== -1) {
         dynamic_link = '/home';
@@ -64,7 +64,7 @@ export default function AppDrawer(props) {
                         </ListItem>
                     </Link>
                     <Link to="/" className={classes.link}>
-                        <ListItem button onClick={() => localStorage.clear()} divider={true}>
+                        <ListItem button onClick={() => localStorage.removeItem('loggedIn')} divider={true}>
                             <ListItemIcon>
                             <LockIcon/>
                             </ListItemIcon>
