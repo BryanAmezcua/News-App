@@ -2,8 +2,9 @@
 News App is an mobile & desktop application that pulls in the latest USA news from newsapi.org. The user can enter search terms and pull up related articles.
 Users can create an account, sign in & sign out.
 
-# CORS related issue
-When I first began this project there were no cross-origin related issue. However recently, when hitting the news API for data, my fetch request was failing because of a missing header in the response. To get around this I am first sending my request through this URL - which allows CORS anywhere -> https://cors-anywhere.herokuapp.com/
+# CORS related issue - Updated 5/27/20
+1.) When I first began this project there were no cross-origin related issue. However recently, when hitting the news API for data, my fetch request was failing because of a missing header in the response. To get around this I am first sending my request through this URL - which allows CORS anywhere -> https://cors-anywhere.herokuapp.com/ <br />
+2.) CORS issue is inconsistent. Therefore, I am leaving the CORS-anywhere to bypass any CORS issue if they return.
 
 # Installation (using Git)
 1.) To begin installation, begin by cloning this repo to your machine -> git clone https://github.com/BryanAmezcua/News-App.git <br />
@@ -31,4 +32,4 @@ When I first began this project there were no cross-origin related issue. Howeve
 [MIT](https://choosealicense.com/licenses/mit/)
 
 # Last updated
-5/22/20 11:30 AM -- Bryan A.
+5/27/20 9:45 PM -- Bryan Amezcua
