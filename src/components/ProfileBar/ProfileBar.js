@@ -33,6 +33,12 @@ const useStyles = makeStyles(theme => ({
       textAlign: 'center',
       fontFamily: '"Helvetica Neue"',
     },
+    photo: {
+        margin: '0 auto',
+        top: '5em',
+        height: '30%',
+        width: '30%'
+    },
 }));
 
 export default function ProfileBar(props) {
@@ -40,7 +46,7 @@ export default function ProfileBar(props) {
     // Drawer State
     const [isDrawerOpen, setDrawerStatus] = useState(false);
 
-    let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    //let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
     return (
         <div className={classes.root}>
@@ -53,7 +59,7 @@ export default function ProfileBar(props) {
                 </IconButton>
 
                 <Typography className={classes.title} variant="h4" noWrap>
-                    Hello {firstName}
+                    Profile
                 </Typography>
 
                 </Toolbar>
