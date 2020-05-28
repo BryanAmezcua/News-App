@@ -46,8 +46,6 @@ export default function ProfileBar(props) {
     // Drawer State
     const [isDrawerOpen, setDrawerStatus] = useState(false);
 
-    //let firstName = document.cookie.replace(/(?:(?:^|.*;\s*)firstName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
     return (
         <div className={classes.root}>
             <AppBar position="static">
