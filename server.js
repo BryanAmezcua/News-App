@@ -1,6 +1,7 @@
 // dependencies for Express Server
 const express = require('express');
 const app = express();
+const path = require('path');
 
 // MongoDB module
 const {MongoClient} = require('mongodb');
@@ -11,6 +12,14 @@ const url = 'mongodb+srv://dbUser:dbUser@users-usi4l.mongodb.net/test?retryWrite
 // set up listener, Port 5000
 app.listen(5000, () => {
     console.log('Server running');
+});
+
+// Serve all static code from build directory
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Client side routing
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // for parsing incomig data into application/json
