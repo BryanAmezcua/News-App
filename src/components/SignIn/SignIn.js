@@ -111,7 +111,7 @@ export default function SignIn(props, ref) {
       action: 'verify'
     };
 
-    axios.post('http://localhost:5000/user_endpoint', data).then(response => {
+    axios.post('/user_endpoint', data).then(response => {
 
       if (response.data.passwordCorrect === false) { // entered password is incorrect
         setPasswordErrors({ passwordMessage: response.data.message, passwordError: true});
