@@ -41,10 +41,10 @@ function App() {
   useEffect(() => {
 
     newsAPI.getDefaultNews().then(jsonResponse => {
-      setNewResults(jsonResponse.articles);
+      /*setNewResults(jsonResponse.articles);
       setTimeout(() => {
         setLoader(false);
-      }, 2000)
+      }, 2000)*/
     });
 
   }, []);

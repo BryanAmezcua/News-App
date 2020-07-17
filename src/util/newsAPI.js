@@ -1,19 +1,11 @@
-let api_key = '819ab61d31a341edb17c9b181786e30d';
-let URL = 'http://newsapi.org/v2/top-headlines?country=us&apiKey=' + api_key;
-let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-let destination = proxyUrl + URL;
-
-
-
-
 const newsAPI = {
 
     async getDefaultNews() { // get top headlines from USA -- API is attached at the end
 
-        return fetch(destination)
-            .then(response => response.json())
+        return fetch('/default_news')
             .then(jsonResponse => {
-                if (jsonResponse) return jsonResponse
+                console.log(jsonResponse)
+                return jsonResponse;
             })
 
         .catch(error => console.log(error)) // log an error if one is present
@@ -30,7 +22,7 @@ const newsAPI = {
         
         try {
 
-            let url = 'http://newsapi.org/v2/everything?q=' + term + '&from=' + year + '-' + month + '-' + dayOfMonth + '&apiKey=' + api_key;
+            let url = 'http://newsapi.org/v2/everything?q=' + term + '&from=' + year + '-' + month + '-' + dayOfMonth + '&apiKey=819ab61d31a341edb17c9b181786e30d';
             
             return fetch(url)
                 .then(response => response.json())
