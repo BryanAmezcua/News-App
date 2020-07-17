@@ -17,7 +17,7 @@ app.listen(port, () => {
     console.log('Server running');
 });
 
-// Serve all static code from build directory
+// Serve all static files from build directory
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Client side routing
