@@ -25,7 +25,7 @@ const axios = require('axios');
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      <Link color="inherit" target="_blank" href="https://github.com/BryanAmezcua/News-App/tree/Sign-in-functionality">
+      <Link color="inherit" target="_blank" href="https://github.com/BryanAmezcua/News-App/">
         News App&copy;
       </Link>{' '}
       {new Date().getFullYear()}
@@ -166,7 +166,7 @@ export default function SignUp() {
       firstName: firstName
     };
 
-    axios.post('http://localhost:5000/user_endpoint', data).then(response => {
+    axios.post('/user_endpoint', data).then(response => {
       if (response.data.error === true) { // user with that email already exists
         setEmailError({ error: true, message: response.data.message})
       } else { // create new account with email

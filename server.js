@@ -1,6 +1,10 @@
 // dependencies for Express Server
 const express = require('express');
 const app = express();
+const path = require('path');
+
+// Port
+const port = process.env.PORT || 5000;
 
 // MongoDB module
 const {MongoClient} = require('mongodb');
@@ -9,8 +13,16 @@ const {MongoClient} = require('mongodb');
 const url = 'mongodb+srv://dbUser:dbUser@users-usi4l.mongodb.net/test?retryWrites=true&w=majority';
 
 // set up listener, Port 5000
-app.listen(5000, () => {
+app.listen(port, () => {
     console.log('Server running');
+});
+
+// Serve all static code from build directory
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Client side routing
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // for parsing incomig data into application/json
@@ -19,7 +31,7 @@ app.use(express.json());
 
 // headers - this is to allow cross origin requests
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
