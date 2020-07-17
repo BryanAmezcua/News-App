@@ -119,7 +119,7 @@ export default function SignIn(props, ref) {
         setEmailErrors({emailMessage: response.data.message, emailError: true});
       } else { // user exists & entered the correct password
         setEmailErrors({emailMessage: response.data.message});
-        document.cookie = `firstName=${response.data.firstName}`;
+        localStorage.setItem('firstName', response.data.firstName);
         setTimeout(function(){
           props.handleLogIn();
           history.push('/home');
