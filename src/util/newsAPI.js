@@ -10,8 +10,7 @@ const newsAPI = {
 
     async getDefaultNews() { // get top headlines from USA -- API is attached at the end
 
-        return fetch(URL) // "destination" was removed because I was seeing a 426 Upgrade Required Error
-
+        return fetch(destination)
             .then(response => response.json())
             .then(jsonResponse => {
                 if (jsonResponse) return jsonResponse
